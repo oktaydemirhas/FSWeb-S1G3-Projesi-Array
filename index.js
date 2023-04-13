@@ -1,5 +1,7 @@
 /* BU DERSDEKİ TÜM DEĞERLERİN DÖNMESİNİ (RETURN) UNUTMAYIN, AKSİ TAKDİRDE TEST KONTROLÜ ÇALIŞMAZ */
 
+const { is } = require("cheerio/lib/api/traversing");
+
 /* İşte veriniz bu */
 const orijinalTatlar = [
   "Muz",
@@ -40,9 +42,12 @@ Aşağıdakileri yapmak için aşağıdaki kopyalama işlevini kullanın:
 */
 
 
-function kopyala(/*kod buraya*/){
-  /*kod buraya*/
+function kopyala(orijinalTatlar) {
+  return [...orijinalTatlar];
 }
+const kopyaTatlar = kopyala(orijinalTatlar);
+console.log(kopyaTatlar);
+
 
 
 /* Görev 2:
@@ -56,9 +61,15 @@ Bir dizinin tam olarak 25 çeşit olduğunu onaylayın. İşleviniz şunları ka
 */
 
 
-function dizi25Cesitmi(/*kod buraya*/){
-  /*kod buraya*/
+function dizi25Cesitmi(kopyaTatlar) {
+  if (kopyaTatlar.length === 25) {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
+console.log(dizi25Cesitmi(kopyaTatlar));
 
 
 /* Görev 3:
@@ -74,9 +85,12 @@ Aşağıdakileri yapmak için cesitEkle işlevini kullanın:
 */
 
 
-function cesitEkle(/*kod buraya*/){
-  /*kod buraya*/
+function cesitEkle(kopyaTatlar) {
+  kopyaTatlar.unshift('Kakule');
+  return kopyaTatlar;
 }
+
+console.log(cesitEkle(kopyaTatlar));
 
 
 /* Cörev 4:
@@ -92,9 +106,12 @@ Aşağıdakileri yapmak için sonCesitiKaldir işlevini kullanın:
 */
 
 
-function sonCesitiKaldir(/*kod buraya*/){
-  /*kod buraya*/
+function sonCesitiKaldir(kopyaTatlar) {
+  kopyaTatlar.pop();
+  return kopyaTatlar;
 }
+sonCesitiKaldir(kopyaTatlar);
+console.log(sonCesitiKaldir(kopyaTatlar));
 
 
 /* Görev 5:
@@ -108,14 +125,15 @@ Aşağıdakileri yapmak için aşağıdaki indekstekiCesitiGetir işlevini kulla
    Örneğin: indekstekiCesitiGetir(orijinalTatlar, 2) çalıştırılmasıyla, Kakule'in başarıyla eklendiği varsayarsak sonuç "Ceviz" olucaktır.
 */
 
-function indekstekiCesitiGetir(/*kod buraya*/){
-  /*kod buraya*/
+function indekstekiCesitiGetir(kopyaTatlar, indexNo) {
+  return kopyaTatlar[indexNo];
 }
 
-
+console.log(sonCesitiKaldir(kopyaTatlar, 2));
 /* Görev 6:
 
-Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, aroma adına göre aromaları kaldırmaları gerektiğini fark ederler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
+Firma, ürün yelpazesine daha fazla lezzet eklemek istediğinden, sadece ilk veya son aromayı keyfi olarak çıkarmak yerine, aroma adına göre aromaları kaldırmaları gerektiğini fark eder-
+ler. Göreviniz, verilen bir dizinde, ada göre bu tadı diziden çıkarmak.
 
 Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
    1. İlk parametrede tatlar dizisini argüman olarak alın
@@ -128,9 +146,14 @@ Aşağıdakileri yapmak için ismeGoreCesitCikar işlevini kullanın:
   İPUCU: Bunun için .splice() kullanabilirsiniz.
 */
 
-function ismeGoreCesitCikar(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreCesitCikar(orijinalTatlar, secim) {
+  const secimiSil = orijinalTatlar.indexOf(secim);
+  orijinalTatlar.splice(secimiSil, 1);
+  return orijinalTatlar;
 }
+
+ismeGoreCesitCikar(orijinalTatlar, 'Limon');
+console.log(orijinalTatlar);
 
 
 /* Görev 7:
@@ -154,10 +177,17 @@ Aşağıdakileri yapmak için ismeGoreFiltrele işlevini kullanın:
 */
 
 
-function ismeGoreFiltrele(/*kod buraya*/){
-  /*kod buraya*/
+function ismeGoreFiltrele(orijinalTatlar, filtre) {
+  let yeniArray = [];
+  for (let i = 0; i < orijinalTatlar.length; i++) {
+    if (orijinalTatlar[i].includes(filtre) === true) {
+      yeniArray.push(orijinalTatlar[i]);
+    }
+  }
+  return yeniArray;
 }
 
+console.log(ismeGoreFiltrele(orijinalTatlar, 'Çikolata'));
 
 
 /* ALIŞTIRMA */
@@ -172,7 +202,7 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/){
+function ortalamaKelimeSayisi(/*kod buraya*/) {
   /*kod buraya*/
 }
 
@@ -190,7 +220,7 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/){
+function rastgeleTatlar(/*kod buraya*/) {
   /*kod buraya*/
 }
 
@@ -234,7 +264,7 @@ function rastgeleTatlar(/*kod buraya*/){
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
-function sa(){
+function sa() {
   console.log('Calışıyor');
   return 'as';
 }
