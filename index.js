@@ -192,7 +192,8 @@ console.log(ismeGoreFiltrele(orijinalTatlar, 'Çikolata'));
 
 /* ALIŞTIRMA */
 
-/* ALIŞTIRMA 1: Bir dizideki ortalama kelime sayısını döndüren bir fonksiyon yazın. Bu işlevi orijinalTatlar dizisinde test etmelisiniz, ancak bunu herhangi bir dizi için de kullanabilmelisiniz.
+/* ALIŞTIRMA 1: Bir dizideki ortalama kelime sayısını döndüren bir fonksiyon yazın. Bu işlevi orijinalTatlar dizisinde test etmelisiniz, ancak bunu herhangi bir dizi için de 
+kullanabilmelisiniz.
 
 Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    1. orijinalTatlar dizisini alın
@@ -202,9 +203,16 @@ Aşağıdakileri yapmak için ortalamaKelimeSayisi işlevini kullanın:
    Örneğin: ortalamaKelimeSayisi(orijinalTatlar) 0 ile 2 arasında bir sayı döndürmelidir.
 */
 
-function ortalamaKelimeSayisi(/*kod buraya*/) {
-  /*kod buraya*/
+let kelimeSayisi = 0;
+
+function ortalamaKelimeSayisi(orijinalTatlar) {
+  for (let i = 0; i < orijinalTatlar.length; i++) {
+    kelimeSayisi = kelimeSayisi + orijinalTatlar[i].split(' ').length
+  }
+  let ortalama = kelimeSayisi / orijinalTatlar.length;
+  return ortalama;
 }
+console.log(ortalamaKelimeSayisi(orijinalTatlar));
 
 
 /* ALIŞTIRMA 2:
@@ -220,47 +228,56 @@ Aşağıdakileri yapmak için rastgeleTatlar işlevini ve yeni dizileri kullanı
 */
 
 
-function rastgeleTatlar(/*kod buraya*/) {
-  /*kod buraya*/
+const birlesikDizi = [...orijinalTatlar, ...yeniTatlar, ...mevsimlikTatlar, ...bolgeselTatlar];
+let rastgeleDizi = [];
+
+function rastgeleTatlar(orijinalTatlar, yeniTatlar, mevsimlikTatlar, bolgeselTatlar) {
+  for (let i = 0; i < 25; i++) {
+    const rastgeleSecim = Math.round(Math.random() * birlesikDizi.length);
+    rastgeleDizi.push(birlesikDizi[rastgeleSecim]);
+    birlesikDizi.splice(rastgeleSecim, 1);
+  }
+  return rastgeleDizi;
 }
+console.log(rastgeleTatlar(rastgeleDizi));
 
-// NEW DATA ARRAYS FOR STRETCH 2 ⬇️
-// const yeniTatlar = [
-//   "Badem",
-//   "Ballı Badem",
-//   "Fıstık Ezmesi",
-//   "Profiterol",
-//   "Madlen Çikolata"
-// ]
 
-// const mevsimlikTatlar = [
-// "Pekan",
-// "Kaju",
-// "Çikolatalı Mousse",
-// "Fransız Vanilyası",
-// "Yumurta",
-// "Alman çikolatası",
-// "Kek üzerine krema",
-// "Hindistan Cevizi",
-// "Kaymaklı Biskuvi",
-// "Beyaz Çikolata",
-// "Mango"
-// ]
+const yeniTatlar = [
+  "Badem",
+  "Ballı Badem",
+  "Fıstık Ezmesi",
+  "Profiterol",
+  "Madlen Çikolata"
+]
 
-// const bolgeselTatlar = [
-// "Kaymak",
-// "Karpuz",
-// "Karadut",
-// "Turunç",
-// "Portakal",
-// "Yogurt",
-// "Krem Peynir",
-// "Kakao",
-// "Karamel macchiato",
-// "Kuru üzüm",
-// "Peynir",
-// "Karamel"
-// ]
+const mevsimlikTatlar = [
+  "Pekan",
+  "Kaju",
+  "Çikolatalı Mousse",
+  "Fransız Vanilyası",
+  "Yumurta",
+  "Alman çikolatası",
+  "Kek üzerine krema",
+  "Hindistan Cevizi",
+  "Kaymaklı Biskuvi",
+  "Beyaz Çikolata",
+  "Mango"
+]
+
+const bolgeselTatlar = [
+  "Kaymak",
+  "Karpuz",
+  "Karadut",
+  "Turunç",
+  "Portakal",
+  "Yogurt",
+  "Krem Peynir",
+  "Kakao",
+  "Karamel macchiato",
+  "Kuru üzüm",
+  "Peynir",
+  "Karamel"
+]
 
 
 /* Lütfen bu satırın altındaki hiçbir şeyi değiştirmeyin */
